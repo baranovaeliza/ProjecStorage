@@ -32,8 +32,7 @@ public class Main {
             System.out.println("11.Выйти");
 
             int command = scanner.nextInt();
-            //TODO для шкафов просмотр по ключу комнаты
-            //TODO для комнат просмотр по идентификатору
+
             if (command == 1) {
                 //объект, который умеет отправлять запросы в бд
                 Statement statement = connection.createStatement();
@@ -64,8 +63,7 @@ public class Main {
                             + result.getDouble("total_load"));
                 }
             }
-            // TODO для шкафов изменение чего-то
-            //TODO удаление для шкафов и комнат
+
             else if (command == 3) {
                 String sql = "update public.\"Rooms\" set max_temperature = 10.0 where name = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -74,7 +72,7 @@ public class Main {
                 String name = scanner.nextLine();
                 preparedStatement.setString(1, name);
                 preparedStatement.executeUpdate();
-            }//TODO получать идентификатор запросом
+            }
             else if (command == 4) {
                 String sql = "update public.\"Shelfs\" set positions_quantity = positions_quantity - 10 where id = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
